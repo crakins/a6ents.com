@@ -30,36 +30,47 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Contact form handling
-const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
+// Ajax form handling (contact form + waitlist signup)
+function wireAjaxForm(form, status, { sendingText, successText, idleText }) {
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = sendingText;
+    status.textContent = '';
+    status.className = 'form__status';
 
-form.addEventListener('submit', async e => {
-  e.preventDefault();
-  const btn = form.querySelector('button[type="submit"]');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  status.textContent = '';
-  status.className = 'form__status';
-
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    });
-    if (res.ok) {
-      status.textContent = 'Message sent! We\'ll be in touch soon.';
-      status.classList.add('form__status--success');
-      form.reset();
-    } else {
-      throw new Error();
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        status.textContent = successText;
+        status.classList.add('form__status--success');
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please email us directly.';
+      status.classList.add('form__status--error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = idleText;
     }
-  } catch {
-    status.textContent = 'Something went wrong. Please email us directly.';
-    status.classList.add('form__status--error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Send Message';
-  }
-});
+  });
+}
+
+wireAjaxForm(
+  document.getElementById('contact-form'),
+  document.getElementById('form-status'),
+  { sendingText: 'Sending...', successText: 'Message sent! We\'ll be in touch soon.', idleText: 'Send Message' }
+);
+
+wireAjaxForm(
+  document.getElementById('waitlist-form'),
+  document.getElementById('waitlist-status'),
+  { sendingText: 'Joining...', successText: 'You\'re on the list! We\'ll email you at launch.', idleText: 'Notify Me' }
+);

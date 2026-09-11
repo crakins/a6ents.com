@@ -42,6 +42,7 @@
 
       <ul class="nav__links" id="nav-links">
         <li><a href="#services">Services</a></li>
+        <li><a href="#panda-panda">Panda Panda</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#why-us">Why Us</a></li>
         <li><a href="#contact" class="btn btn--primary btn--nav">Contact</a></li>
@@ -121,6 +122,53 @@
           </div>
           <h3 class="card__title">Custom Integrations</h3>
           <p class="card__text">Connect your existing tools — CRMs, ERPs, databases — with purpose-built AI agents that bridge the gaps.</p>
+        </div>
+
+        <!-- App Development & Product Management -->
+        <div class="card fade-in">
+          <div class="card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <h3 class="card__title">App Development &amp; Product Management</h3>
+          <p class="card__text">End-to-end app development and product management as a service — from concept and design through App Store launch and ongoing iteration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= PANDA PANDA SHOWCASE ======= -->
+  <section class="section showcase" id="panda-panda">
+    <div class="container">
+      <div class="showcase__card fade-in">
+        <div>
+          <span class="showcase__eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <polyline points="12 7 12 12 15 15"/>
+            </svg>
+            Coming Soon
+          </span>
+          <h2 class="showcase__title">Panda Panda</h2>
+          <p class="showcase__tagline">One tap to leap. Five worlds, five panda kin, and a season that turns every 150 metres — all on your wrist.</p>
+          <p class="showcase__meta">An Apple Watch endless runner, built end-to-end by our <strong>App Development &amp; Product Management</strong> team. Launching soon for watchOS 11.4+.</p>
+          <div class="showcase__pillrow">
+            <span class="pill">No ads</span>
+            <span class="pill">Offline play</span>
+            <span class="pill">Seasonal mechanics</span>
+            <span class="pill">Quests &amp; streaks</span>
+          </div>
+          <form class="showcase__form js-ajax-form" id="waitlist-form" action="https://formspree.io/f/xppzboqq" method="POST">
+            <input type="hidden" name="form" value="Panda Panda pre-release waitlist">
+            <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address">
+            <button type="submit" class="btn btn--panda">Notify Me</button>
+          </form>
+          <p class="form__status" id="waitlist-status"></p>
+        </div>
+        <div class="showcase__watch">
+          <img src="assets/images/pandapanda-home.png" alt="Panda Panda home screen on Apple Watch" class="showcase__screenshot">
         </div>
       </div>
     </div>
@@ -256,7 +304,7 @@
           </div>
         </div>
 
-        <form class="contact__form fade-in" id="contact-form" action="https://formspree.io/f/xlgwjkzd" method="POST">
+        <form class="contact__form fade-in" id="contact-form" action="https://formspree.io/f/xppzboqq" method="POST">
           <div class="form__group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required placeholder="Your name">
@@ -292,6 +340,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>
